@@ -11,7 +11,7 @@ RUN poetry config virtualenvs.in-project true --local
 
 RUN poetry install --no-dev
 
-# ENTRYPOINT ["poetry", "run"]
-#CMD ["gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
+EXPOSE 8000
 
-CMD gunicorn app:app --bind 0.0.0.0:PORT --reload
+ENTRYPOINT ["poetry", "run"]
+CMD ["gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
